@@ -2,3 +2,5 @@
 
 # angular
 Example of angular app
+
+[DEMO](https://stackblitz.com/github/andreymashukov/angular)
