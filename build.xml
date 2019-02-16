@@ -1,0 +1,39 @@
+<project name="Angular test" default="build" basedir=".">
+
+    <property environment="env"/>
+
+    <!-- Clean up -->
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <!-- Download dependencies -->
+    <target name="dependencies">
+        <exec executable="npm" failonerror="true">
+            <arg line="install --quiet"/>
+        </exec>
+    </target>
+
+    <!-- Run tests -->
+    <target name="tests">
+        <sequential>
+            <antcall target="karma"/>
+        </sequential>
+    </target>
+
+<!-- Run unit tests -->
+    <target name="karma">
+        <exec executable="ng" failonerror="true">
+            <arg line="test --browsers ChromeHeadless"/>
+        </exec>
+    </target>
+
+    <!-- Full build -->
+    <target name="build">
+        <sequential>
+            <antcall target="dependencies"/>
+            <antcall target="tests"/>
+        </sequential>
+    </target>
+
+</project>
